@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>EvilCat Prompt Forge LITE · Sora 2</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <section class="panel">
+      <div class="header">
+        <div>
+          <div class="title">EvilCat Prompt Forge LITE</div>
+          <div class="subtitle">Sora 2 · Clips de 15s (9:16)</div>
+        </div>
+        <div class="badge-row">
+          <div class="badge badge-main">Sora 2 only</div>
+          <div class="badge">Cartoon / Creativo</div>
+        </div>
+      </div>
+
+      <!-- Paso 1: estilo visual -->
+      <div class="step">
+        <div class="step-head">
+          <div class="step-title-wrap">
+            <div class="step-num">1</div>
+            <div class="step-title">Estilo visual</div>
+          </div>
+          <div class="step-hint">Look general del vídeo.</div>
+          <button class="btn btn-small" id="btn-expand-style">Ampliar</button>
+        </div>
+        
+        <div class="style-filters" id="style-filters">
+          <button class="filter-pill active" data-filter="all">Todo</button>
+          <button class="filter-pill" data-filter="realista">4K / Realista</button>
+          <button class="filter-pill" data-filter="cartoon">Cartoon</button>
+          <button class="filter-pill" data-filter="arte">Arte / Estilizado</button>
+          <button class="filter-pill" data-filter="horror">Horror</button>
+        </div>
+
+        <div class="style-strip" id="style-strip"></div>
+      </div>
+
+      <!-- Paso 2: modo de cámara -->
+      <div class="step">
+        <div class="step-head">
+          <div class="step-title-wrap">
+            <div class="step-num">2</div>
+            <div class="step-title">Modo de cámara</div>
+          </div>
+          <div class="step-hint">Cómo se graba la escena.</div>
+          <button class="btn btn-small" id="btn-expand-camera">Ampliar</button>
+        </div>
+        <div class="style-strip" id="camera-strip"></div>
+      </div>
+
+      <!-- Paso 3: idea base -->
+      <div class="step">
+        <div class="step-head">
+          <div class="step-title-wrap">
+            <div class="step-num">3</div>
+            <div class="step-title">Idea base</div>
+          </div>
+          <div class="step-hint">Qué pasa en el clip.</div>
+        </div>
+        <div class="field">
+          <label class="field-label" for="idea">Descripción</label>
+          <textarea id="idea" placeholder="Quién sale, dónde están, qué pasa y cómo remata en el segundo 15."></textarea>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-small" id="btn-idea-ai">✨ Idea IA (random)</button>
+          <button class="btn btn-primary" id="btn-generate">✶ Generar prompt</button>
+          <button class="btn btn-small" id="btn-copy">📋 Copiar</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="header">
+        <div>
+          <div class="title">Salida del generador</div>
+          <div class="subtitle">Prompt listo para pegar en Sora 2.</div>
+        </div>
+      </div>
+
+      <div class="out-section">
+        <div class="out-label">Prompt generado</div>
+        <div class="out-box" id="output">
+Escribe una idea, elige estilo y modo de cámara y pulsa "Generar prompt".
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Modal estilos visuales -->
+  <div class="modal-backdrop" id="visual-modal">
+    <div class="modal-panel">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title">Seleccionar estilo visual</div>
+          <div class="modal-sub">Pulsa sobre un estilo para aplicarlo al generador.</div>
+        </div>
+        <button class="modal-close" data-close-modal="visual">Cerrar</button>
+      </div>
+      <div class="modal-grid" id="visual-modal-grid"></div>
+    </div>
+  </div>
+
+  <!-- Modal modos de cámara -->
+  <div class="modal-backdrop" id="camera-modal">
+    <div class="modal-panel">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title">Seleccionar modo de cámara</div>
+          <div class="modal-sub">Pulsa un modo de cámara.</div>
+        </div>
+        <button class="modal-close" data-close-modal="camera">Cerrar</button>
+      </div>
+      <div class="modal-grid" id="camera-modal-grid"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
